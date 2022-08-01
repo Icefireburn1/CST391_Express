@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./src/app"));
-const port = 8080;
+const port = process.env.port || 8080;
 app_1.default.listen(port, function () {
     return console.log(`server active on http://localhost:${port}`);
 });
