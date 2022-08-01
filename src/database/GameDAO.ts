@@ -26,10 +26,10 @@ export class GameDAO
         }
         else {
             // cloud
-            host = process.env.HOST;
-            port = Number(process.env.PORT);
-            username = process.env.USERNAME;
-            password = process.env.PASSWORD;
+            host = process.env.DB_HOST;
+            port = Number(process.env.DB_PORT);
+            username = process.env.DB_USERNAME;
+            password = process.env.DB_PASSWORD;
         }
 
         this.pool = mysql.createPool({

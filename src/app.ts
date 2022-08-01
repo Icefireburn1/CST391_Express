@@ -12,6 +12,7 @@ class App {
     this.setRoutes();
   }
 
+  // Setup our routes
   setRoutes(){
     this.app.use(bodyParser.json());
     this.app.use('/service', ServiceRoute);

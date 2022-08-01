@@ -2,13 +2,13 @@
 // service.ts file
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceRoute = void 0;
-var express_1 = require("express");
-var GameDAO_1 = require("../database/GameDAO");
+const express_1 = require("express");
+const GameDAO_1 = require("../database/GameDAO");
 exports.ServiceRoute = (0, express_1.Router)();
-var dao = new GameDAO_1.GameDAO();
+const dao = new GameDAO_1.GameDAO();
 // GET all games
-exports.ServiceRoute.get('/games', function (req, res) {
-    dao.getAllGames(function (result) {
+exports.ServiceRoute.get('/games', (req, res) => {
+    dao.getAllGames((result) => {
         if (result.length > 0) {
             res.send(result);
         }
@@ -18,8 +18,8 @@ exports.ServiceRoute.get('/games', function (req, res) {
     });
 });
 // GET single game by ID
-exports.ServiceRoute.get('/games/:gameID', function (req, res) {
-    dao.getGame(function (result) {
+exports.ServiceRoute.get('/games/:gameID', (req, res) => {
+    dao.getGame((result) => {
         if (result != undefined) {
             res.send(result);
         }
@@ -29,8 +29,8 @@ exports.ServiceRoute.get('/games/:gameID', function (req, res) {
     }, Number(req.params.gameID));
 });
 // PUT update a single game
-exports.ServiceRoute.put('/games/:gameID', function (req, res) {
-    dao.updateGame(function (result) {
+exports.ServiceRoute.put('/games/:gameID', (req, res) => {
+    dao.updateGame((result) => {
         if (result > 0) {
             res.status(201).send({ "Result:": result.toString() + " row(s) were affected" });
         }
@@ -40,8 +40,8 @@ exports.ServiceRoute.put('/games/:gameID', function (req, res) {
     }, req.body, Number(req.params.gameID));
 });
 // DELETE a single game
-exports.ServiceRoute.delete('/games/:gameID', function (req, res) {
-    dao.deleteGame(function (result) {
+exports.ServiceRoute.delete('/games/:gameID', (req, res) => {
+    dao.deleteGame((result) => {
         if (result > 0) {
             res.status(202).send({ "Result:": result.toString() + " row(s) were deleted" });
         }
@@ -51,8 +51,8 @@ exports.ServiceRoute.delete('/games/:gameID', function (req, res) {
     }, Number(req.params.gameID));
 });
 // POST a game
-exports.ServiceRoute.post('/games', function (req, res) {
-    dao.createGame(function (result) {
+exports.ServiceRoute.post('/games', (req, res) => {
+    dao.createGame((result) => {
         if (result > 0) {
             res.status(201).send({ "Result:": req.body.title + " was created" });
         }
@@ -61,3 +61,4 @@ exports.ServiceRoute.post('/games', function (req, res) {
         }
     }, req.body);
 });
+//# sourceMappingURL=service.js.map
